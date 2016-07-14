@@ -1,0 +1,340 @@
+﻿<!DOCTYPE HTML>
+<html lang="en" ng-app>
+<head>
+    <meta charset='utf-8'>
+	<title>Border Security</title>
+	<link rel="stylesheet" type="text/css" href="fonts/stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="js/simpletip.js"></script>
+	<script src="funcionalidad.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src="http://code.angularjs.org/1.0.2/angular.min.js"></script>  
+	<script type="text/javascript" charset="utf-8">
+      window.info_data = {}	  
+      function fronteraController($scope){
+      		$scope.secciones = ["The Border","Apprehensions","Deaths","Geography","San Diego to Tucson","The Experts"];
+      		$scope.seleccionado = "The Border";
+      		$scope.anio_seleccionado = 1960;
+      		$scope.showOption = function(o){
+      			$scope.seleccionado = o;
+      			console.log($scope.seleccionado);
+      		}
+
+      		$scope.mostrar = function(){
+      			mostrarinfo($scope.anio_seleccionado,$('#tipo').val());
+      		}
+
+      		$scope.anios = [];
+
+      		for (i=1960;i<=2013;i++){		
+				if	(jQuery.inArray("Aprehensiones", registros[i]) != -1){					
+						$scope.anios.push(i);
+				}
+					
+			}
+
+      		$scope.setAnios = function(tipo){
+      			var years = [];
+      			for (i=1960;i<=2013;i++){		
+						if	(jQuery.inArray(tipo, registros[i]) != -1){					
+							years.push(i);
+					}
+					
+				}
+				if (tipo=="Aprehensiones"){
+					$scope.anio_seleccionado=1960;
+				}
+				if (tipo=="Muertes"){
+					$scope.anio_seleccionado=1998;
+				}
+				if (tipo=="Agentes"){
+					$scope.anio_seleccionado=1993;
+				}
+				$scope.anios = years;
+				$scope.mostrar();
+      		}
+      	}
+    </script>	
+	
+</head>
+<body>		
+	<div id="content" data-ver="ing" ng-controller="fronteraController">				
+		<div class="botones_ver">
+				<a href="#"><div class="boton">ESP</div></a>
+				<div class="titulo">
+					BORDER SECURITY: BETWEEN REALITY AND FICTION
+				</div>
+				<ul>
+					<li ng-class="{activo:seccion==seleccionado}" ng-repeat="seccion in secciones" ng-click="showOption(seccion)"><span>{{seccion}}</span></li>
+				</ul>
+		</div>
+		<div ng-show="seleccionado=='The Border'">
+			<div class="en_header">
+				<p>
+					The humanitarian crisis bent by the rise in the number of unaccompanied Mexican and Central American alien children apprehended in the Southwest border (52,000 so far this year) has once again put the spotlight on the security issues surrounding the border between Mexico and the U.S. and the federal governments efforts to stop illegal immigration. These issues have been discussed for over half a century, yet the huge amounts of money channeled to fortify the border have had contradictory results. Univision Noticias gathered a set of unique and revealing statistics to demonstrate the complexity of the issues concerning the border, including: border patrol agents, apprehensions, deaths, “coyote” costs and changes in immigration routes over time.
+				</p>
+				<div class="botones">						
+					<div id="btn_1" class="btn1_activo">APPREHENSIONS</div>
+					<div id="btn_2">DEATHS</div>				
+					<div id="btn_3">BORDER PATROL <br/> AGENTS</div>				
+				</div>		
+				
+				<div id="linea-tiempo">
+					<div id="slide">
+					</div>				
+				</div>
+				
+				<div id="info">
+					<div id="anio"></div>
+					<div id="datos"></div>
+					<div id="info_tipo">Apprehensions</div>
+				</div>			
+				<div class="contenedor_cruces">
+					<div class="cruce" id="cruce1"><div class="mark"></div></div>
+					<div class="cruce" id="cruce2"><div class="mark"></div></div>
+					<div class="cruce" id="cruce3"><div class="mark"></div></div>
+					<div class="cruce" id="cruce4"><div class="mark"></div></div>
+					<div class="cruce" id="cruce5"><div class="mark"></div></div>
+					<div class="cruce" id="cruce6"><div class="mark"></div></div>
+					<div class="cruce" id="cruce7"><div class="mark"></div></div>
+					<div class="cruce" id="cruce8"><div class="mark"></div></div>
+					<div class="cruce" id="cruce9"><div class="mark"></div></div>
+				</div>
+				<div class="en_instrucciones"></div>	
+				<ul id="timeline" class="timeline"></ul>
+			</div>				
+			<input type="hidden" name="tipo" id="tipo" value="Aprehensiones">
+		</div>
+		<div class="nota">
+			<div ng-show="seleccionado=='Apprehensions'">
+				<div class="titulo_nota">
+					Border Security
+				</div>
+				<p>
+					Barack Obama recently announced that an additional 3.7 billion dollars were needed to respond to the humanitarian crisis resulting from the exponential rise of unaccompanied alien children apprehensions in the U.S.-Mexico border (more than 52,000 this fiscal year alone). 
+				</p>
+				<p>
+					This adds to the billions of dollars that have already been appropriated (or will be) to avoid or disrupt illegal immigration. Yet it won’t be an easy path to obtain such a figure.
+				</p>
+				<p>
+					On the 26th of June of this year a key Senate panel gave a bipartisan approval to a $47 billion dollar budget for the Department of Homeland Security for the 2015 fiscal year –of which 77 million will be used to cope with the unaccompanied alien children, amount that according to the federal government isn’t enough. 
+				</p>
+				<p>
+					Besides dealing with the influx of unaccompanied alien children, the Department of Homeland Security’s budget also seeks to deter illegal immigration.
+				</p>
+				<p>
+					One of the clauses included in the project requests raising immigration taxes, by air and sea, to have the necessary funds to hire 1,000 additional border patrol agents.
+				</p>
+				<p>
+					Furthermore, the U.S. Customs and Border Protection’s (CBP) budget will also increase by 4% and more money will be directed to increase apprehensions in the border.
+				</p>
+				<p>
+					Yet bigger and longer fences, more technology and more boots on the ground do not necessarily affect illegal immigration numbers. 
+				</p>
+				<p>
+					Some border security operations, such as Operation Gatekeeper, even had contradictory effects according to many experts on the subject.  
+				</p>
+				<p>
+					According to CBP public data and several research papers on the subject, these operations have had three key consequences: they’ve forced immigrants to cross at different points of entry where lower enforcement measures are in place, they increased the number of deaths along the US-Mexico border and they've decreased the number of immigrants willing or able to return to their home countries. 
+				</p>
+				<p>
+					The incentives to cross illegally the border are far too strong for many, and as long as the immigrant’s home economies do not grow at a faster rate than the U.S., no fence will deter them from crossing.
+				</p>				
+				<h2>
+					Apprehensions on the Border
+				</h2>
+				<p>
+					Since there is no way of knowing exactly how many immigrants cross the southern border illegally, we can only use the numbers of immigrants apprehended at the border to try to understand changes in immigration flows.
+				</p>
+				<p>
+					Recent statistics reveal a negative relationship between the budget allocated to border security and immigrants detentions. It might seem that the decrease in detained immigrants is due, for the most part, to increases in border security, but this is not the case, either.
+				</p>
+				<img class="grafica" src="images/graficas/grafica1_eng.jpg">
+				<img class="grafica" src="images/graficas/grafica2_eng.jpg">
+
+				<!--div class="en_sprite ing-en_grafica1"></div>
+				<div class="en_sprite ing-en_grafica2"></div-->			
+				<p>
+					The decrease in detentions is simply the result of fewer people trying to cross the border because of external factors such as labor opportunities and rising economies back home.
+				</p>
+				<p>
+					We can use the Mexican case to exemplify the above statement. For the first time in four decades, the net immigration from Mexico to the US fell to zero and was probably negative in 2012.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							<a href="http://www.pewhispanic.org/files/2012/04/PHC-04-23a-Mexican-Migration.pdf" target="_blank">Pew Hispanic Center, “Net Migration from Mexico Falls to Zero – and Perhaps Less”, (DE, July 12, 2013)</a>
+						</p>
+						<div class="cerrar">CLOSE</div>
+					</div>
+				</p>
+				<p>
+					What made it happen? The weakened US job and housing construction markets and better economic opportunities in Mexico. Economic forces, and not fences on the border, made immigration flows drop. And as long as the US’s economic growth relative to the immigrant-sending countries is less than one, immigration will keep on falling. 
+				</p>
+				<img class="grafica" src="images/graficas/grafica3_eng.jpg">
+				<!--div class="en_sprite ing-en_grafica3"></div-->			
+			</div>
+			<div ng-show="seleccionado=='Deaths'">				
+				<div class="titulo_nota">
+					Deaths on the Border
+				</div>
+				<p>
+					But beyond just looking at detentions, what surprised us the most is that there is a positive relationship between budgets allocated and numbers of agents on one hand and deaths along the border on the other.
+				</p>
+				<p>
+					Besides the monetary costs of building a fence, costs are also accrued in the form of human lives. Border security operations have forced immigrants to cross illegally into the US through the Arizona desert, a journey full of far more hardships than other crossings.
+				</p>
+				<img class="grafica" src="images/graficas/grafica4_eng.jpg">
+				<img class="grafica" src="images/graficas/grafica5_eng.jpg">
+				<!--div class="en_sprite ing-en_grafica4"></div>			
+				<div class="en_sprite ing-en_grafica5"></div-->			
+				<p>
+					While crossing the border became physically more perilous, it's also become that much more expensive. If the coyote business followed the supply and demand rules of economic theory perfectly then we'd have observed a fall in transportation costs. But the cost of smuggling has risen dramatically. The cost of crossing the border in 1980 was about $600 dollars, at the end of 2010 it cost around $3,000 and according to recent children testimonies, the trip now costs over $6,000 dollars.
+				</p>
+				<img class="grafica" src="images/graficas/grafica6_eng.jpg">
+				<img class="grafica" src="images/graficas/grafica7_eng.jpg">
+				<!--div class="en_sprite ing-en_grafica6"></div>			
+				<div class="en_sprite ing-en_grafica7"></div-->			
+				<p>
+					Price changes have been most evident at the San Diego, El Paso and Del Río border crossings.
+				</p>
+			</div>
+			<div ng-show="seleccionado=='San Diego to Tucson'">	
+				<div class="titulo_nota">
+					From San Diego to Tucson
+				</div>
+				<p>
+					The best case study of changes in the flow of immigrants, border deaths and changes to numbers of agents comes with a comparison of San Diego and Tucson.
+				</p>
+				<img class="grafica" src="images/graficas/grafica11_eng.jpg">
+				<img class="grafica" src="images/graficas/grafica12_eng.jpg">
+				<img class="grafica" src="images/graficas/grafica13_eng.jpg">
+				<!--div class="en_sprite ing-en_grafica11"></div>	
+				<div class="en_sprite ing-en_grafica12"></div>	
+				<div class="en_sprite ing-en_grafica13"></div-->	
+				<p>
+					In 1997, the year Operation Rio Grande started, the number of immigrants apprehended at either of these border crossings intersected. A fence constructed in California had forced more immigrants into the Arizona desert and by 2001, the total number of detentions at both ports fell and continues to fall. The reasons seem to have nothing to do with the fence or the security cameras. 
+				</p>
+				<p>
+					Although the number of detentions fell, more agents were actually deployed to both areas of the border. It comes as a surprise that even though fewer immigrants now cross the border illegally through Tucson, more border patrol agents are stationed there.
+				</p>
+				<p>
+					The Arizona desert has become a grim witness to the difficulties of achieving the American Dream. 219 corpses were found there in 2005, 251 in 2010 and overall deaths have increased to the tune of 1,664% from 1998 to 2013.
+				</p>			
+			</div>	
+			<div ng-show="seleccionado=='Geography'">		
+				<div class="titulo_nota">
+					The 9 points of entry
+				</div>
+				<p>
+					Far from deterring immigrants from crossing the border illegally, increased border security operations – which have included Operation Gatekeeper, Operation Hold-The-Line, Operation Rio Grande and the Secure Fence Act – have merely forced immigrants to cross at different border crossings.
+				</p>
+				<p>
+					Immigrants used to cross through San Diego and El Paso in the 1980s. But with the fence and security measurements, they now cross through Tucson, Arizona and Rio Grande Valley, Texas.
+				</p>
+				<img class="grafica" src="images/graficas/grafica8_eng.jpg">
+				<img class="grafica" src="images/graficas/grafica9_eng.jpg">
+				<img class="grafica" src="images/graficas/grafica10_eng.jpg">
+				<!--div class="en_sprite ing-en_grafica8"></div>			
+				<div class="en_sprite ing-en_grafica9"></div>			
+				<div class="en_sprite ing-en_grafica10"></div-->			
+				<p>
+					Deployments of US border patrol agents to all nine ports of entry along the Southwestern border have been constant over the last few years. Congress has asked repeatedly for increases in budget and more boots along the border, especially in Texas.
+				</p>
+				<p>
+					Just as there are more agents patrolling the border, deaths along the border have also risen, though more so in Texas and Arizona.
+				</p>
+				<p>
+					In 1998, 26 people died in the Rio Grande Valley. By 2013 this number had risen to 156. This means a 500% increase in deaths in that area. In Laredo, the percentage increase was 350% (from 20 to 90 deaths) from 1998 to 2012 and, although it decreased to 56 deaths in 2013, this number still represents a 180% increase when compared to 1998. 
+				</p>
+			</div>
+			<div ng-show="seleccionado=='The Experts'">
+				<div class="titulo_nota">
+					What Do the Experts Say?
+				</div>			
+				<p>
+					Most of the experts on the subject, Martin for example, state that border security issues, though key to an enforcement strategy, have received too much attention in the past few years. According to Martin, even if the US constructed a border fence along its entire southwestern border, the coyotes will always find a way to smuggle people in.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							David A. Martin, “Eight Myths About Immigration Enforcement”, en Legislation and Public Policy, vol. 10, s.n. pp. 5541-544.
+						</p>
+						<div class="cerrar">CLOSE</div>
+					</div>
+				</p>
+				<p>
+					Conclusions drawn from most studies, Massey’s is a good example, argue that greater border security has had little to no effect on the probability of immigrating illegally to the US. Rather, it has a big effect on the probability of going back home.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							Douglas S. Massey, “The Wall That Keeps Illegal Workers In”, en The New York Times, 2006, p. A.23.				
+						</p>
+						<div class="cerrar">CLOSE</div>
+					</div>
+				</p>
+				<p>
+					According to Massey, while in 1980 some 50% of the immigrants eventually returned to their home countries, by the year 2000 no more than 25% were returning.
+				</p>
+				<p>
+					Leaving the fences behind, authors like Hanson have tried to explain decreases in immigration numbers through economic variables. Hanson, studying monthly border detentions, stated that when Mexican salaries fall 10% in comparison to US salaries, there is a 6% increase in attempted border crossing.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							Gordon H. Hanson, “The Economic Logic of Illegal Immigration”, en The Bernard and Irene Schwartz Series on American Competitiveness, núm. 26, 2007, p. 12.
+						</p>
+						<div class="cerrar">CLOSE</div>
+					</div>
+				</p>
+				<p>
+					While conducting surveys, Reyes, Johnson and Van Swearingen found that even though most people they talked to were aware of increased border security measures, most did not find this a sufficient reason to stop trying to cross illegally into the US.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							Belinda Reyes et. al., Holding the Line? The Effect of the Recent Border Build-up on Unauthorized Immigration, Public Policy Institute of California, San Francisco, 2002, p. 19. 
+						</p>
+						<div class="cerrar">CLOSE</div>
+					</div>
+				</p>		
+			</div>
+			<!--div class="conceptos">
+				<p>
+					<span>i</span>Pew Hispanic Center, “Net Migration from Mexico Falls to Zero – and Perhaps Less”, (DE, 12 de Julio, 2013: http://www.pewhispanic.org/files/2012/04/PHC-04-23a-Mexican-Migration.pdf). 
+				</p>
+				<p>
+					<span>ii</span>David A. Martin, “Eight Myths About Immigration Enforcement”, en Legislation and Public Policy, vol. 10, s.n. pp. 5541-544.
+				</p>
+				<p>
+					<span>iii</span>Douglas S. Massey, “The Wall That Keeps Illegal Workers In”, en The New York Times, 2006, p. A.23.
+				</p>
+				<p>
+					<span>iv</span>Gordon H. Hanson, “The Economic Logic of Illegal Immigration”, en The Bernard and Irene Schwartz Series on American Competitiveness, núm. 26, 2007, p. 12.
+				</p>
+				<p>
+					<span>v</span>Belinda Reyes et. al., Holding the Line? The Effect of the Recent Border Build-up on Unauthorized Immigration, Public Policy Institute of California, San Francisco, 2002, p. 19. 
+				</p>
+			</div-->
+			<div class="nota_metodologica">
+				<h2>Methodology Note</h2>
+				<p>
+					Data on apprehensions, deaths and border patrol agents was downloaded from the Border Patrol website. The data on border crossing costs (coyotes) was obtained from the Mexican Migration Project of Princeton University. Click the following link to download the complete data:
+					<a href="https://www.dropbox.com/sh/4r893m762uqrnnz/8tCVf3Kc3k" target="_blank">https://www.dropbox.com/sh/4r893m762uqrnnz/8tCVf3Kc3k.</a> 
+				</p>
+				<p>
+					To read other research on the subject, click the following link:  
+					<a href="https://www.dropbox.com/sh/fzd1nvf6xcjljvv/UALDif3tt4" target="_blank">https://www.dropbox.com/sh/fzd1nvf6xcjljvv/UALDif3tt4.</a> 
+				</p>
+				<div class="descarga">
+					<a href="https://www.dropbox.com/sh/4r893m762uqrnnz/8tCVf3Kc3k" target="_blank"><div class="descargar">DOWNLOAD DATA</div></a>
+				</div>				
+				<div class="d4">
+					<span>D4 para Univision Noticias.</span>
+					<a href="http://www.data4.mx" target="_blank">http://www.data4.mx</a>			
+				</div>
+			</div>			
+		</div>	
+	</div>	
+</body>
+</html>
+
+

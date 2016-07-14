@@ -1,0 +1,577 @@
+/**
+Estilos para la infografía "Voto Latino"
+**/
+
+* { margin: 0; padding: 0; border:none; font-family: 'OpenSansRegular';}
+img {border:none;}
+
+*:focus {outline: none;}
+
+.content{
+	width:775px;
+	margin: 0px 10px;
+	padding-top:10px;
+}
+
+h1, h2{
+	font-family: 'OpenSansBold';
+}
+
+h1{
+	font-size:40px;
+}
+
+h2{
+	font-size:20px;
+}
+
+.header{
+	clear:both;
+	width:100%;
+	overflow: hidden;
+}
+
+.header div{
+	float:left;
+}
+
+div.contenedor_titulo {
+	width: 45%;
+}
+
+.balazo{
+	font-size:10px;
+	margin:10px auto;
+}
+
+.seleccionada{
+	text-align:center;
+	font-size:18px;
+	color:#4C4C4C;
+}
+
+.menu {
+	clear: both;
+	text-align:center;
+}
+.menu .descripcion {
+	float: none;
+	clear: both;
+}
+
+.descripcion a{
+	color:#000 !important;
+	text-decoration:none !important;
+}
+
+div.navegue {
+	overflow: hidden;
+	float: none;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	color: #999999;
+	background: url("../images/navegue.png") no-repeat center bottom;
+	padding-bottom: 14px;
+	margin-top: 10px;
+}
+.header ul{
+	margin-bottom: 50px;
+	margin-top: 10px;
+}
+
+.header ul li{
+	float: left;
+	list-style-type: none;
+	font-size: 10px;
+	width: 81px;
+	height: 10px;
+	text-align: center;
+	margin: 5px 0px 0px -1px;
+	border-left:1px #000000 solid;
+	border-right:1px #000000 solid;
+}
+.header ul li span{
+	display: inline-block;
+	padding-bottom:5px;
+	border-bottom:1px transparent solid;
+}
+
+li#opt-2 span, li#opt-3 span, li#opt-4 span {
+	margin-top: -5px;
+	
+}
+
+.menu ul li{
+	display: inline-block;
+	list-style-type: none;
+	font-size: 10px;
+	width: 100px;
+	text-align: center;
+	margin: 5px 5px -1px 5px;
+	background-color:#F1F1F1;
+	padding:5px 0px;
+}
+
+.menu ul li:hover, .header ul li:hover {
+	cursor:pointer;
+}
+
+.descripcion{
+	font-size:10px;
+	height:35px;
+	text-align:center;
+	padding-top:10px;
+}
+.menu ul li.activa{
+	background-color:#CBCBCB;
+}
+
+.header ul li.activo span{
+	color:#053061;
+	border-bottom:1px #053061 solid;
+}
+
+p{
+	font-size:10px;
+	margin:10px 0px;
+}
+
+.nota{
+	margin-top:50px;
+}
+
+.nota div{
+	float:left;
+	font-size:10px;
+}
+
+.titulo_nota{
+	width: 120px;
+	padding: 20px 0px;
+	border-right: 1px gray solid;
+	margin-right: 10px;
+}
+
+.parrafo{
+	width:493px;
+}
+
+.boton{
+	width: 88px;
+	background: #F1F1F1 url("../images/ico.png") no-repeat 5px center;
+	padding: 5px 0px 5px 25px;
+	margin: 10px 0px 10px 30px;
+}
+
+.d4 {		
+	width:290px;
+	margin:20px auto;
+	clear:both;
+	background: url("../images/univision.png") no-repeat !important;
+	background-position:5px 7px !important;
+	background-size:60px 60px !important;
+	padding:20px 0px;
+}
+
+.d4 span, .d4 a {
+	display: block;
+	margin-left: 65px;
+	font-family: 'proxima_nova_rgregular';
+	font-size: 14px;
+	color: #545454 !important;
+	text-decoration:none;
+}
+
+.footer{
+	
+}
+
+.d4 span{
+	background: url("../images/d4.png") no-repeat !important;
+	background-position: 2px 1px !important;
+	background-size: 15px 15px !important;
+	font-weight: bold;
+	padding: 2px 0px 2px 20px;
+}	
+div#tooltip .titulo_tooltip span {
+	float: right;
+	font-size: 14px;
+	color: #666666;
+}
+div#tooltip .titulo_tooltip {
+	font-size: 14px;
+	border-bottom: 1px #656565 solid;
+}
+#tooltip {
+	width: 200px;
+	position: absolute;
+	background: white;
+	padding: 5px;
+	font-size: 12px;
+	color: #666666;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 3px 3px 15px #888888;
+	z-index:99999999;
+}
+
+#nombre{
+	font-size:12px;
+	color:#666;
+}
+
+#tooltip h3{
+	font-size:12px;
+	color:#666666;
+	font-weight: normal;
+}
+#chart_t, #datos_t {
+	width: 48%;
+	float: left;
+	padding:10px 0px;
+}
+
+#datos_t{
+	margin-left:1.5%;
+}
+
+.barras{
+	width: 100%;
+	clear: both;
+	padding-bottom: 8px;
+	overflow: hidden;
+}
+
+.barras div{
+	height:15px;
+	float:left;
+}
+
+.barras div.democratas{
+	background-color:#00008F;
+}
+.barras div.republicanos{
+	background-color:#A90B00;
+}
+
+#datos_t div{
+	text-align:right;
+}
+
+#hispanos_votos, #hispanos_votos_porc{
+	color:#AA0C00;
+}
+
+#hispanos_votos{
+	margin-bottom:15px;
+}
+
+
+.barras div.democratas, .barras div.republicanos{
+	color:white;
+	text-decoration:none;
+	font-weight:normal;
+	text-align:center;
+	font-size:10px;
+}
+
+div.rango1{
+	clear: both;
+	margin: -80px auto 0px auto;
+	overflow: hidden;
+	width: 300px;
+}
+
+div.rango1 div{
+	font-size: 10px;
+	color: #666666;
+	width: 120px;
+	padding-left: 20px;
+	float: left;
+}
+
+div.competido {
+	background: url("../images/competido.png") no-repeat 5px 9px;
+	padding-top: 6px;
+}
+div.rep_hispano {
+	background: url("../images/rep_hispano.png") no-repeat 5px 9px;
+}
+
+
+div.rango2{	
+	position: absolute;
+	height: 140px;
+	width: 170px;
+	margin-top: -260px;
+	margin-left: 600px;
+}
+
+div.rango2 div{
+	font-size:10px;
+	color:#666666;
+	text-align:right;
+	padding-right: 10px;
+}
+
+div.rango2 div .recuadro{	
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	margin-left: 10px;	
+	margin-top:3px;
+}
+
+.iconos{
+	text-align: center;
+}
+
+.iconos span{
+	width: 9px;
+	height: 9px;	
+	display: inline-block;
+	margin:0px 5px;
+}
+
+.iconos .ico1{
+	background: url("../images/competido.png") no-repeat center center;
+}
+
+.iconos .ico2{
+	background: url("../images/rep_hispano.png") no-repeat center center;
+}
+
+div.descripcion.ng-binding.uno {
+	padding-top: 17px;
+	height: 28px;
+}
+
+.ui-select{
+	display:none;
+}
+
+#univision{
+	width:775px;
+	height:600px;
+}
+
+.estatica{
+	background:url("../images/web-chart-esp.png") no-repeat center center;
+	width:775px;
+	height:156px;
+}
+
+.estatica2{
+	background:url("../images/2012-web-chart-esp.png") no-repeat center center;
+	width:775px;
+	height:156px;
+}
+
+.sub{
+	clear:both;
+}
+
+.autocomplete{
+	width: 182px;
+	padding-right: 22px;
+	background: url("../images/search.png") no-repeat center right;
+	background-size: 20px 20px;
+}
+
+.ui-autocomplete{
+	font-size:10px !important;
+}
+
+.ui-autocomplete-input{
+	font-size:10px;
+	color:#777777 !important;
+	
+}
+
+#cerrar{
+	cursor:pointer;
+	width:22px;
+	height:22px;
+	background: url("../images/close_tooltip.png") no-repeat;
+}
+
+div.recuadro {
+	width: 10px;
+	height: 10px;
+}
+
+.icono_menu{
+	display:none;
+}
+
+p.nota_grafica a {
+	color: #000 !important;
+}
+p.nota_grafica, p.nota_grafica2 {
+	width: 400px;
+	text-align: center;
+	margin: 30px auto;
+}
+
+@media only screen and (max-width: 479px) {
+	h1{
+		font-size:27px;
+		text-align:center;
+	}
+
+	h2{
+		font-size:13px;
+		text-align:center;
+		margin-bottom:10px;
+	}
+
+	h1, h2{
+		font-family: 'OpenSansBold';
+		display: inline-block;
+		text-align: center;
+		width: 256px;
+	}
+
+	.content{
+		width:300px;
+		margin:0px auto;
+	}
+	.header div{
+		width:100%;
+		float:none;
+	}
+
+	.header ul{
+		margin-top:-50px;
+	}
+
+	.header ul li {
+		display: block;
+		width: 292px;
+		text-align: left;
+		padding: 5px 3px; 
+		border: 1px #F1F1F1 solid;
+		margin: -1px 0px 0px 0px;
+	}
+
+	.header ul li.activo span{
+		color:#053061;
+		border-bottom:1px #053061 solid;
+		padding-bottom:1px;
+	}
+
+	.header div{
+		background-color:#F1F1F1;
+	}
+
+	.web{
+		display:none;
+	}
+	.ui-select{
+		display:block;
+	}
+
+	#univision{
+		width:300px;
+		height:350px;
+	}
+
+	div.rango2 div {
+		font-size: 7.4px;
+		color: #666666;
+		/* text-align: right; */
+		display: inline-block;
+		margin: 0px 3px;
+	}
+
+	div.rango2 {
+		position: relative;
+		height: 140px;
+		width: 100%;
+		margin-top: 0px;
+		margin-left: 0px;
+		text-align:center;
+	}
+
+	div.rango2 div span{
+		margin-left:1px;
+	}
+
+	#zoomout{
+		padding-right:25px;
+		background:url("../images/zoomout.png") no-repeat center right;
+		text-align:right;
+	}
+
+	#zoomout:hover{
+		cursor:pointer;
+	}
+
+	.estatica{
+		background:url("../images/mov-chart-esp.png") no-repeat center center;
+		background-size:100% 100%;
+		width:300px;
+		height:93px;
+	}
+
+	.estatica2{
+		background:url("../images/2012-mov-chart-esp.png") no-repeat center center;
+		background-size:100% 100%;
+		width:300px;
+		height:93px;
+	}
+
+	.nota div{
+		float:none;
+	}
+
+	.titulo_nota, .parrafo{
+		width:100%;
+		padding:0px;
+		border:none;		
+	}
+
+	.boton{
+		margin:10px auto;
+	}
+
+	.descripcion{
+		height:auto !important;
+		padding:5px 0px !important;
+		background-color: #F3F3F3;
+		margin: 10px 0px;
+	}	
+
+	.icono_menu{
+		display: block;
+		width: 37px !important;
+		height: 37px;
+		background: url("../images/menu.png");
+		margin: 10px 5px 0px 0px;
+		float: left !important;
+	}
+
+	.icono_menu:hover{
+		cursor: pointer;
+	}
+	.oculto{
+		display:none;
+	}
+
+	.menu ul li{
+		width:98px;
+		margin: 5px 1px -1px 1px;
+	}
+
+	.autocomplete{
+		margin:0px auto;
+	}
+
+	p.nota_grafica {
+		width:220px;
+	}
+
+}

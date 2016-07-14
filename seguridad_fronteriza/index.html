@@ -1,0 +1,406 @@
+﻿<!DOCTYPE HTML>
+<html lang="en" ng-app>
+<head>
+    <meta charset='utf-8'>
+	<title>Border Security</title>
+	<link rel="stylesheet" type="text/css" href="fonts/stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="js/simpletip.js"></script>
+	<script src="funcionalidad.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	<script src="http://code.angularjs.org/1.0.2/angular.min.js"></script>  
+	<script src="jquery.ui.touch-punch.js"></script>  
+	
+	<script type="text/javascript" charset="utf-8">
+      window.info_data = {}	  
+
+      	function fronteraController($scope){
+
+      		$scope.menu=false;
+      		$scope.secciones = ["La frontera","Aprehensiones","Muertos","Geografía","San Diego a Tucson","Los Expertos"];
+      		$scope.seleccionado = "La frontera";
+      		$scope.anio_seleccionado = 1960;
+      		$scope.showOption = function(o){
+      			$scope.seleccionado = o;
+      			console.log($scope.seleccionado);
+      			if(ancho<=400){
+      				$scope.menu=false;
+      			}
+      		}
+
+      		$scope.mostrar = function(){
+      			mostrarinfo($scope.anio_seleccionado,$('#tipo').val());
+      		}
+
+      		$scope.anios = [];
+
+      		for (i=1960;i<=2013;i++){		
+				if	(jQuery.inArray("Aprehensiones", registros[i]) != -1){					
+						$scope.anios.push(i);
+				}
+					
+			}
+
+      		$scope.setAnios = function(tipo){
+      			var years = [];
+      			for (i=1960;i<=2013;i++){		
+						if	(jQuery.inArray(tipo, registros[i]) != -1){					
+							years.push(i);
+					}
+					
+				}
+				if (tipo=="Aprehensiones"){
+					$scope.anio_seleccionado=1960;
+				}
+				if (tipo=="Muertes"){
+					$scope.anio_seleccionado=1998;
+				}
+				if (tipo=="Agentes"){
+					$scope.anio_seleccionado=1993;
+				}
+				$scope.anios = years;
+				$scope.mostrar();
+      		}
+      	}
+    </script>	
+	
+</head>
+<body>		
+	<div id="content" data-ver="esp" ng-controller="fronteraController">				
+		<div class="botones_ver">
+				<a href="#"><div class="boton">ENG</div></a>
+				<div class="boton_menu" ng-click="menu=true"></div>
+				<div class="titulo">
+					SEGURIDAD FRONTERIZA: MITO Y REALIDAD
+				</div>
+				<ul ng-show="menu">
+					<li ng-class="{activo:seccion==seleccionado, first:seccion=='La frontera'}" ng-repeat="seccion in secciones" ng-click="showOption(seccion)"><span>{{seccion}}</span></li>
+				</ul>
+				<!--select id="select_menu" ng-model="seleccionado"
+						data-ng-options="seccion as seccion for seccion in secciones" 
+						ng-change="showOption()" ng-class="{segundo:seleccionado!='SEGURIDAD FRONTERIZA'}">                
+				</select-->
+				
+		</div>
+		<div ng-show="seleccionado=='La frontera'">
+			<div class="header">
+				<p>
+					La crisis humanitaria producida por el incremento en el número de menores no acompañados procedentes de México y Centroamérica que están siendo detenidos en la frontera sur de Estados Unidos (más de 52,000 en lo que va corrido del año fiscal 2014) ha puesto de nuevo sobre el tapete el tema de la seguridad fronteriza y los esfuerzos del gobierno por impedir la inmigración ilegal. El tema de la seguridad se viene discutiendo desde hace muchos años, pero a pesar de los enormes recursos que se le han dedicado los resultados no son para nada contundentes. Para mostrar la compleja realidad de la frontera Univision Noticias reunió en este especial las estadísticas más significativas en esa materia: agentes, aprehensiones, muerte de migrantes, costos de los “coyotes” y cambios en los flujos migratorios por punto de entrada.
+				</p>
+				<div class="botones">						
+					<div id="btn_1" class="btn1_activo" ng-click="setAnios('Aprehensiones')">APREHENSIONES</div>
+					<div id="btn_2" ng-click="setAnios('Muertes')">MUERTOS</div>				
+					<div id="btn_3" ng-click="setAnios('Agentes')">AGENTES <br/>FRONTERIZOS</div>				
+				</div>		
+				<!--div class='stick'>								
+					<div class='timeline'>					
+						<div class='timeline-background'>
+							<div class='timeline-container'>						
+							  <div id='timeline'>							
+							  </div>						  
+							  <div id='selected'>
+								
+							  </div>
+							</div>
+						</div>
+					</div>
+					<div class="timeline_footer"></div>				
+				</div-->					
+				<div id="linea-tiempo">
+					<div id="slide">
+					</div>				
+				</div>
+				
+				
+					<!--div id="select_anios" class="movil">
+						<div id="anio_seleccioado">
+							<select id="select_menu" ng-model="anio_seleccionado"
+								data-ng-options="anio as anio for anio in anios" 
+								ng-change="mostrar()">                
+							</select>
+						</div>						
+					</div-->				
+				<div id="info">
+					<div id="anio"></div>
+					<div id="datos"></div>
+					<div id="info_tipo">Aprehensiones</div>
+				</div>			
+				<div class="contenedor_cruces">
+					<div class="cruce" id="cruce1"><div class="mark"></div></div>
+					<div class="cruce" id="cruce2"><div class="mark"></div></div>
+					<div class="cruce" id="cruce3"><div class="mark"></div></div>
+					<div class="cruce" id="cruce4"><div class="mark"></div></div>
+					<div class="cruce" id="cruce5"><div class="mark"></div></div>
+					<div class="cruce" id="cruce6"><div class="mark"></div></div>
+					<div class="cruce" id="cruce7"><div class="mark"></div></div>
+					<div class="cruce" id="cruce8"><div class="mark"></div></div>
+					<div class="cruce" id="cruce9"><div class="mark"></div></div>
+				</div>
+				<div class="instrucciones"></div>			
+				<ul id="timeline" class="timeline"></ul>
+			</div>	
+			
+			<input type="hidden" name="tipo" id="tipo" value="Aprehensiones">
+		</div>
+
+		<div class="nota">
+			<div ng-show="seleccionado=='Aprehensiones'">
+				<div class="titulo_nota">
+					Seguridad fronteriza
+				</div>
+				<p>
+					El presidente Barack Obama anunció recientemente que planea pedir 3.7 mil millones de dólares en fondos de emergencia para responder a la crisis humanitaria generada por la detención de más de 52,000 niños no acompañados que intentaban entrar ilegalmente al país por la frontera sur en lo que va corrido del actual año fiscal. 
+				</p>
+				<p>
+					Esos recursos se sumarían a los miles de millones de dólares que han sido apropiados ya (o están en vía de serlo) para tratar de evitar la porosidad de la frontera y desincentivar la inmigración ilegal. Pero no le será fácil obtenerlos.
+				</p>
+				<p>
+					El 26 de junio de este año el Comité de Asignaciones del Senado aprobó, con el respaldo de ambos partidos, un presupuesto de 47,000 millones de dólares para el Departamento de Seguridad Nacional durante al año fiscal 2015, que incluye 77 millones para enfrentar el tema de los niños, cantidad que el gobierno considera insuficiente. 
+				</p>
+				<p>
+					Más allá de la crisis de los niños, sin embargo, el presupuesto para el Departamento de Seguridad Nacional busca reducir el número de inmigrantes indocumentados. 
+				</p>
+				<p>
+					El proyecto tiene una cláusula, por ejemplo, para aumentar el impuesto que pagan los viajeros que entran a Estados Unidos por aire o por mar, con el fin de recaudar fondos para contratar más de 1,000 nuevos agentes fronterizos. 
+				</p>
+				<p>
+					Incrementa también el presupuesto de la Oficina de Aduanas y Control Fronterizo (CBP, por sus siglas en inglés), en un 4%, y aumenta los fondos para la detención de personas que entren ilegalmente al país. 
+				</p>
+				<p>
+					Lo que muestran hasta ahora las cifras, sin embargo, es que ni más muros, ni más tecnología, ni más agentes fronterizos producen una disminución automática de la inmigración ilegal.
+				</p>
+				<p>
+					De hecho, algunos de los operativos de seguridad fronteriza que se han realizado en los últimos años han tenido un impacto que para muchos expertos ha sido contraproducente.
+				</p>
+				<p>
+					De acuerdo con los datos de la patrulla fronteriza (y de estudios de diversos autores), los operativos han tenido tres efectos principales: mover los flujos migratorios a puntos de entrada menos vigilados, aumentar el número de muertes en la frontera y disminuir la cantidad de migrantes que regresan a su país de origen. 
+				</p>
+				<p>
+					Los incentivos para la inmigración siguen siendo demasiado fuertes, y mientras no se observe un patrón según el cual los países expulsores (como México y El Salvador) crezcan más que Estados Unidos, ningún muro podrá impedir el flujo de personas hacia este país.
+				</p>
+				<h2>
+					Aprehensiones en la frontera
+				</h2>
+				<p>
+					Por tratarse de un flujo ilegal es imposible saber cuántas personas cruzan la frontera sin documentos. Lo que sí se puede saber es cuántas de éstas son aprehendidas, y por medio de las aprehensiones tratar de entender los altibajos del flujo migratorio. 
+				</p>
+				<p>
+					Las estadísticas recientes muestran una relación negativa entre el aumento en el presupuesto y el número de agentes fronterizos, por un lado, y las aprehensiones de migrantes indocumentados, por el otro. 
+				</p>
+				<p>
+					En principio se podría atribuir la disminución en el número de aprehensiones a los operativos mismos de fortalecimiento de seguridad fronteriza. Pero esto no es necesariamente cierto. 
+				</p>				
+				<div class="grafica grafica1"></div>
+				<div class="grafica grafica2"></div>
+				<!--div class="sprite esp-grafica1"></div>
+				<div class="sprite esp-grafica2"></div-->			
+				<p>
+					La introducción de otras variables (en particular el crecimiento económico), muestra que la disminución en el número de aprehensiones está relacionada con una disminución en el número de personas que emigran a Estados Unidos y no necesariamente con la represión.
+				</p>
+				<p>
+					En el caso de México, la relación es clara. El año 2012 marcó un parte-aguas en la migración de ese país hacia Estados Unidos. Por primera vez, después de cuatro décadas, el flujo migratorio de migrantes mexicanos fue negativo.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							<a href="http://www.pewhispanic.org/files/2012/04/PHC-04-23a-Mexican-Migration.pdf" target="_blank">Pew Hispanic Center, “Net Migration from Mexico Falls to Zero – and Perhaps Less”, (DE, 12 de Julio, 2013)</a>
+						</p>
+						<div class="cerrar">CERRAR</div>
+					</div>
+				</p>
+				<p>
+					¿Y qué hay detrás de este fenómeno, de acuerdo con los expertos? Un mercado laboral debilitado, un mercado de construcción quebrantado y mejores condiciones económicas en México (por extraño que parezca).
+				</p>
+				<p>
+					Es decir, han sido las fuerzas económicas y no los muros quienes han dictado los patrones de migración a Estados Unidos. Cuando el crecimiento relativo de Estados Unidos en comparación con los países expulsores de migrantes es menor a uno, se frena la migración. 
+				</p>
+				<div class="grafica grafica3"></div>
+				<!--div class="sprite esp-grafica3"></div-->			
+			</div>
+			<div ng-show="seleccionado=='Muertos'">
+				<div class="titulo_nota">
+					Muertes en la frontera
+				</div>
+				<p>
+					Si bien no parece existir una relación causal entre el aumento en el presupuesto y el número de agentes de la Patrulla Fronteriza, por un lado, y el número de aprehensiones, por el otro, sí parece haberla en el caso del número de migrantes que pierden la vida cruzando la frontera. 
+				</p>
+				<p>
+					Los operativos de seguridad fronteriza han empujado a los migrantes a cruzar por el desierto de Arizona, donde enfrentan un sinnúmero de riesgos, y en muchos casos la muerte. 
+				</p>
+				<div class="grafica grafica4"></div>
+				<div class="grafica grafica5"></div>
+				<!--div class="sprite esp-grafica4"></div>			
+				<div class="sprite esp-grafica5"></div-->			
+				<p>
+					Contratar a alguien que conozca el camino puede disminuir el riesgo, pero aumenta considerablemente el costo de la aventura. 
+				</p>
+				<p>
+					Si el negocio de los “coyotes” siguiera las reglas de oferta y demanda, se habría observado una caída en los precios de cruce, por la baja en el número de personas que emigran. 
+				</p>
+				<p>
+					Sin embargo los precios han crecido exorbitantemente. En 1980 cruzar la frontera costaba poco menos de 600 dólares. A finales del año 2010 costaba más de 3,000. Y hoy en día, según testimonios relacionados con la crisis de los menores, puede costar más de 6,000.
+				</p>
+				<div class="grafica grafica6"></div>
+				<div class="grafica grafica7"></div>
+				<!--div class="sprite esp-grafica6"></div>			
+				<div class="sprite esp-grafica7"></div-->			
+				<p>
+					Más agentes en los puntos de entrada de San Diego, El Paso y Del Río han aumentado los riesgos y elevado el precio del cruce. 
+				</p>
+			</div>
+			<div ng-show="seleccionado=='San Diego a Tucson'">	
+				<div class="titulo_nota">
+					De San Diego a Tucson
+				</div>
+				<p>
+					Los casos de San Diego y Tucson son los que mejor ejemplifican los movimientos en los flujos migratorios post-operativos de seguridad fronteriza. 
+				</p>
+				<div class="grafica grafica11"></div>
+				<div class="grafica grafica12"></div>
+				<div class="grafica grafica13"></div>
+				<!--div class="sprite esp-grafica11"></div>	
+				<div class="sprite esp-grafica12"></div>	
+				<div class="sprite esp-grafica13"></div-->	
+				<p>
+					En 1997, año en que se puso en funcionamiento el Operativo Río Grande, se cruzan las líneas de aprehensiones en ambos puntos de entrada. La barda construida en la zona de San Diego empujó a los migrantes al desierto de Arizona. 
+				</p>
+				<p>
+					A partir del año 2001, el total de aprehensiones en ambos cruces fronterizos empezó a caer, efecto de la ya mencionada desaceleración en el flujo migratorio.
+				</p>
+				<p>
+					Pero a pesar de la caída en el total de aprehensiones, tanto en San Diego como en Tucson el número de agentes ha seguido en alza. En 2013 el número de agentes en Tucson excedía al de San Diego, a pesar de que son pocos ya los que cruzan hoy por ahí. 
+				</p>
+				<p>
+					El testigo por excelencia, el cómplice de esos sueños no cumplidos ha sido el desierto de Arizona. Entre 1998 y 2013 se produjo un aumento de 1,664% en el número de muertes, la mayoría de ellos en el desierto.
+				</p>
+			</div>
+			<div ng-show="seleccionado=='Geografía'">		
+				<div class="titulo_nota">
+					Los 9 puntos de entrada
+				</div>
+				<p>
+					Los grandes operativos de seguridad fronteriza en Estados Unidos –Operación Bloqueo, Operación Guardián, Operación Río Grande y la Ley de Barda Segura– lejos de frenar los flujos migratorios han llevado a que los migrantes indocumentados elijan cruzar por zonas menos vigiladas. 
+				</p>
+				<p>
+					En los años ochenta y principios de los noventa los migrantes cruzaban por San Diego y El Paso, pero con la construcción de las bardas a lo largo de la frontera (empezando por California) el flujo migratorio se ha mudado a Tucson, Arizona y Río Grande Valley, Texas. 
+				</p>
+				<div class="grafica grafica8"></div>
+				<div class="grafica grafica9"></div>
+				<div class="grafica grafica10"></div>				
+				<!--div class="sprite esp-grafica8"></div>			
+				<div class="sprite esp-grafica9"></div>			
+				<div class="sprite esp-grafica10"></div-->			
+				<p>
+					En los nueve puntos de entrada el crecimiento en el número de agentes ha sido exponencial a lo largo de estos últimos tres años. Al crecimiento de los agentes lo acompaña el crecimiento de migrantes que pierden la vida intentando cruzar. 
+				</p>
+				<p>
+					El número de muertes en la frontera ha crecido sustancialmente desde finales de los años noventa, particularmente en los puntos de entrada en Texas y Arizona. 
+				</p>
+				<p>
+					En Río Grande Valley se documentaron 26 muertes en 1998, y 156 en 2013, un aumento de 500%. En Laredo, el crecimiento en muertes fue de 350% (pasando de 20 a 90 muertos) de 1998 a 2012. Aunque se redujo a 56 en 2013, esto sigue representando un crecimiento de 180% con respecto a 1998. 
+				</p>				
+			</div>
+			<div ng-show="seleccionado=='Los Expertos'">
+				<div class="titulo_nota">
+					Qué dicen los expertos
+				</div>
+				<p>
+					Buena parte del análisis anterior está basado en los estudios de varios autores que se han preocupado por la frontera, cuya lectura es importante en este momento.
+				</p>
+				<p>
+					David A. Martin considera que las medidas de seguridad fronteriza si bien son importantes en una estrategia de orden público, han recibido más atención de lo que deberían. 
+				</p>
+				<p>
+					Martin asegura que aun cuando se construya una barda que abarque toda la frontera entre México y Estados Unidos, los coyotes siempre encontrarán otras maneras de entrar.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							David A. Martin, “Eight Myths About Immigration Enforcement”, en Legislation and Public Policy, vol. 10, s.n. pp. 5541-544.
+						</p>
+						<div class="cerrar">CERRAR</div>
+					</div>
+				</p>
+				<p>
+					Para Douglas S. Massey, la militarización de la frontera ha tenido un efecto muy pequeño en la probabilidad de migrar sin documentos a Estados Unidos. Lo que sí ha disminuido es la probabilidad de regresar a casa. Se ha vuelto tan peligroso, tan costoso, cruzar la frontera, que aquellos que lo logran nunca regresan.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							Douglas S. Massey, “The Wall That Keeps Illegal Workers In”, en The New York Times, 2006, p. A.23.
+						</p>
+						<div class="cerrar">CERRAR</div>
+					</div>
+				</p>
+				<p>
+					De acuerdo con Massey, mientras que en 1980 la mitad de los mexicanos regresaban a casa en un periodo de 12 meses, en el año 2000 apenas regresó el 25%. 
+				</p>
+				<p>
+					Gordon H. Hanson dice, por su parte, que cuando los salarios en México caen 10% en relación a los salarios en Estados Unidos, aumentan en 6% los intentos de cruzar la frontera sin papeles.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador centrado" style="visibility:hidden; position:absolute;">
+						<p>
+							Gordon H. Hanson, “The Economic Logic of Illegal Immigration”, en The Bernard and Irene Schwartz Series on American Competitiveness, núm. 26, 2007, p. 12.
+						</p>
+						<div class="cerrar">CERRAR</div>
+					</div>
+				</p>
+				<p>
+					Según Belinda Reyes, “casi todas las personas con las que hablamos sabían de los muros y de las nuevas dificultades de cruzar la frontera, para la mayoría no fueron razón suficiente para no intentar cruzar”.
+					<img src="images/marcador.jpg" class="marcador">
+					<div class="tooltip_marcador" style="visibility:hidden; position:absolute;">
+						<p>
+							Belinda Reyes et. al., Holding the Line? The Effect of the Recent Border Build-up on Unauthorized Immigration, Public Policy Institute of California, San Francisco, 2002, p. 19
+						</p>
+						<div class="cerrar">CERRAR</div>
+					</div>
+				</p>		
+			</div>
+			<!--div class="conceptos">
+				<p>
+					<span>i</span>Pew Hispanic Center, “Net Migration from Mexico Falls to Zero – and Perhaps Less”, (DE, 12 de Julio, 2013: http://www.pewhispanic.org/files/2012/04/PHC-04-23a-Mexican-Migration.pdf). 
+				</p>
+				<p>
+					<span>ii</span>David A. Martin, “Eight Myths About Immigration Enforcement”, en Legislation and Public Policy, vol. 10, s.n. pp. 5541-544.
+
+				</p>
+				<p>
+					<span>iii</span>Douglas S. Massey, “The Wall That Keeps Illegal Workers In”, en The New York Times, 2006, p. A.23.
+				</p>
+				<p>
+					<span>iv</span>Gordon H. Hanson, “The Economic Logic of Illegal Immigration”, en The Bernard and Irene Schwartz Series on American Competitiveness, núm. 26, 2007, p. 12.
+				</p>
+				<p>
+					<span>v</span>Belinda Reyes et. al., Holding the Line? The Effect of the Recent Border Build-up on Unauthorized Immigration, Public Policy Institute of California, San Francisco, 2002, p. 19. 
+				</p>
+			</div-->
+			<div class="nota_metodologica">
+				<h2>Nota Metodológica</h2>
+				<p>
+					Los datos de aprehensiones, muertes, agentes y presupuesto fronterizos se obtuvieron de la Patrulla Fronteriza. Los datos del costo de coyotes se obtuvieron del Mexican Migration Project de la Universidad de Princeton. Ingresa al siguiente enlace para consultar los datos: 
+					<a href="https://www.dropbox.com/sh/4r893m762uqrnnz/8tCVf3Kc3k" target="_blank">https://www.dropbox.com/sh/ 4r893m762uqrnnz/8tCVf3Kc3k.</a> 
+				</p>
+				<p>
+					Podrás leer más sobre el efecto de bardas en la migración indocumentada al ingresar al siguiente enlace
+					<a href="https://www.dropbox.com/sh/fzd1nvf6xcjljvv/UALDif3tt4" target="_blank">https://www.dropbox.com/sh/ fzd1nvf6xcjljvv/UALDif3tt4.</a> 
+				</p>
+				<div class="descarga">
+					<a href="https://www.dropbox.com/sh/4r893m762uqrnnz/8tCVf3Kc3k" target="_blank"><div class="descargar">DESCARGAR DATOS</div></a>
+				</div>
+				<div class="d4">
+					<span>D4 para Univision Noticias.</span>
+					<a href="http://www.data4.mx" target="_blank">http://www.data4.mx</a>			
+				</div>
+			</div>
+			
+		</div>	
+	</div>	
+	<img src="images/ico1.png" style="display:none">
+	<img src="images/ico2_act.png" style="display:none">
+	<img src="images/ico3_act.png" style="display:none">
+	<img src="images/btn1.png" style="display:none">
+	<img src="images/btn2_activo.png" style="display:none">	
+	<img src="images/btn3_activo.png" style="display:none">	
+</body>
+</html>
+
+

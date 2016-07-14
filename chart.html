@@ -1,0 +1,139 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<title>Muertes en el DF</title>
+	<script src="d3.min.js"></script>
+	<script src="d3.geom.min.js"></script>
+	<script src="d3.layout.min.js"></script>	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+		/* Estilos para el tooltip de la gráfica 2*/
+
+#nytg-chartFrame{
+	width:300px;	
+	clear:both;	
+}
+
+svg{	
+	width:300px;
+	height:450px;
+	display:block;
+	margin:0 auto;	
+}
+
+#nytg-tooltipContainer {
+  width:260px;
+  position: absolute;
+  bottom: 0;  
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #898979;
+  color: #000;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);  
+  border:1px #493F4D solid;  
+}
+
+#nytg-tooltip {
+  width:100%;
+  text-align:left;  
+  z-index: 1000;
+  position: absolute;  
+  display: none;
+  color:#FFFFFF;
+  padding:0px 10px;
+}
+
+#nytg-tooltip .texto_tooltip {
+	float:left;
+	width:250px;
+	font-size: 12px;
+	color:#000;
+	text-align:left;  
+	padding-bottom:5px;
+}
+
+#nytg-tooltip .texto_tooltip span{
+	font-family: 'robotobold_italic';
+	font-size: 12px;
+	color:#000;
+	padding-bottom:5px;
+}
+
+#nytg-tooltip .nytg-value {	
+	text-align:center;
+	font-size: 52px;	
+	color:#000;
+	padding:5px;
+	float:left;
+}
+
+#nytg-tooltip .nytg-total {	
+	text-align:center;
+	font-size: 52px;	
+	color:#000;
+	padding:5px;
+	float:left;
+}
+
+#nytg-tooltip .nytg-name {	
+	text-align:left;
+	font-size: 52px;	
+	color:#000;
+	padding:5px;
+	float:left;
+}
+
+	</style>
+</head>
+<body>
+	<div id="content">							
+		<div class="nytg">				
+			<div id="nytg-chartFrame">
+				<script src="funcionalidad.js"></script>				
+				<div id="nytg-chart">										
+					<div id="nytg-tooltip">
+						<div id="nytg-tooltipContainer">
+							<table>
+								<tr>
+									<td>
+										<div class="texto_tooltip">
+											Monto destinado al objetivo:<br/>
+											<span class="nytg-value"></span>
+										</div>					
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="texto_tooltip">
+											Total de presupuesto adicional para el Departamento:<br/>
+											<span class="nytg-total"></span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="texto_tooltip">
+											Objetivo:<br/>
+											<span class="nytg-name"></span>							
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="nytg-overlays">
+						<div class="nytg-overlay" id="nytg-totalOverlay" >
+						</div>
+					</div>
+					<div id="nytg-chartCanvas"></div>
+				</div>
+			</div>			
+		</div>    
+</body>
+</html>
+
+

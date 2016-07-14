@@ -1,0 +1,48 @@
+/**
+Estilos para la infografía "Voto Latino version inglés"
+**/
+.estatica{
+	background:url("../images/2014-web-chart-ing.png") no-repeat center center;
+	width:775px;
+	height:170px;
+}
+
+.estatica2{
+	background:url("../images/2012-web-chart-ing.png") no-repeat center center;
+	width:751px;
+	height:170px;
+}
+
+.header ul li, .header ul li span {
+	height:50px;
+}
+
+#opt-2 span, #opt-4 span {
+	height: 40px;
+	padding-top: 10px;
+}
+
+li#opt-0 span, li#opt-1 span {
+	height: 30px;
+	padding-top: 20px;
+}
+
+
+@media only screen and (max-width: 479px) {
+	.estatica2{
+		background:url("../images/2012-web-chart-ing_mobile.png") no-repeat center center !important;
+		background-size:100% 100%;
+		width:291px;
+		height:590px;
+		margin:15px auto;
+	}
+
+	.estatica{
+		background:url("../images/2014-web-chart-ing_mobile.png") no-repeat center center !important;
+		width:291px;
+		height:590px;
+		margin:15px auto;
+	}
+	
+
+}
